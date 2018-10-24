@@ -1,0 +1,127 @@
+.card-stack {
+  position: relative;
+}
+.card-container,
+.card {
+  width: 200px;
+  height: 150px;
+  border-radius: 8px;
+}
+.card-container {
+  margin: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  perspective: 600px;
+}
+.card {
+  transition: opacity 0.5s ease;
+  transform: translate(-4px, -4px);
+}
+#card-1 {
+  z-index: 20;
+}
+#card-2 {
+  z-index: 19;
+}
+#card-3 {
+  z-index: 18;
+}
+#card-4 {
+  z-index: 17;
+}
+#card-5 {
+  z-index: 16;
+}
+#card-6 {
+  z-index: 15;
+}
+#card-7 {
+  z-index: 14;
+}
+#card-8 {
+  z-index: 13;
+}
+#card-9 {
+  z-index: 12;
+}
+#card-10 {
+  z-index: 11;
+}
+#card-11 {
+  z-index: 10;
+}
+#card-12 {
+  z-index: 9;
+}
+#card-13 {
+  z-index: 8;
+}
+#card-14 {
+  z-index: 7;
+}
+#card-15 {
+  z-index: 6;
+}
+#card-16 {
+  z-index: 5;
+}
+.card.card-selected {
+  background-color: lightblue;
+}
+.card.card-selected .card-body {
+  transition: background-color 0.3s ease;
+}
+.card.card-matched {
+  opacity: 0;
+}
+.card-body {
+  position: relative;
+  padding: 0;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.card-face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+}
+.card-face-front,
+.card-face-back {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+}
+.card-face-front {
+  background-image: url(../images/jungle-eyes-static.jpg);
+}
+.card[data-match='1'] .card-face-back {
+  background-image: url(../images/monkey-1.jpg);
+}
+.card[data-match='2'] .card-face-back {
+  background-image: url(../images/monkey-2.jpg);
+}
+.card[data-match='3'] .card-face-back {
+  background-image: url(../images/monkey-3.jpg);
+}
+.card[data-match='4'] .card-face-back {
+  background-image: url(../images/monkey-4.jpg);
+}
+.card[data-match='5'] .card-face-back {
+  background-image: url(../images/monkey-5.jpg);
+}
+.card[data-match='6'] .card-face-back {
+  background-image: url(../images/monkey-6.jpg);
+}
+.card[data-match='7'] .card-face-back {
+  background-image: url(../images/monkey-7.jpg);
+}
+.card[data-match='8'] .card-face-back {
+  background-image: url(../images/monkey-8.jpg);
+}
+.card-face-back {
+  transform: rotateY(180deg);
+}
+.card.is-flipped .card-body {
+  transform: rotateY(180deg);
+}
