@@ -12,20 +12,21 @@ body {
 
 section {
   padding: 32px 16px;
-  width: 300px;
+  width: 220px;
 }
 
 h1 {
   position: absolute;
-  bottom: 36px;
-  left: -8px;
+  bottom: 48px;
+  left: 12px;
   color: white;
-  font-size: 60px;
+  font-size: 58px;
   font-family: 'Luckiest Guy', cursive;
   line-height: 55px;
-  transform: rotate(-3deg);
+  transform: rotate(-5deg);
 }
 
+/*
 h1::before {
   content: '* a little match game *';
   position: absolute;
@@ -40,6 +41,7 @@ h1::before {
   text-align: center;
   transform: translatex(-50%);
 }
+*/
 
 h1::after {
   content: 'Memory Monkey';
@@ -93,7 +95,7 @@ h2 strong {
 /* game container */
 .game-container {
   position: relative;
-  width: 1180px;
+  width: 1100px;
   z-index: 1;
   background-color: #c0c0c0;
   border-radius: 8px;
@@ -103,7 +105,7 @@ h2 strong {
 .game-container .monkey {
   position: absolute;
   bottom: -42px;
-  left: 185px;
+  left: 106px;
   z-index: 5;
 }
 
