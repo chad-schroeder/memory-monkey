@@ -33,23 +33,31 @@ const game = {
     });
   },
   play() {
-    // close alert box
+    // reset game data
+    this.data.matched = 0;
+    this.data.score = 0;
+    score.textContent = this.data.score;
+
+    // hide alert box
     alert.classList.add('alert-hide');
 
-    // add loading state
+    // add loading state to card stack
     stack.classList.add('card-stack-loading');
 
     // shuffle card data
     this.shuffle();
 
-    // deal out cards
+    // apply card matching and deal out cards
     const cards = document.querySelectorAll('.card');
     cards.forEach((card, index) => {
+      // clear out previous game card classes, if exists
+      card.classList.remove('card-matched', 'is-flipped');
+
       card.setAttribute('data-match', this.data.cards[index]);
       card.classList.remove('card-stacked');
     });
 
-    // remove starting classes
+    // card stack loading finished
     stack.classList.remove('card-stack-loading');
 
     // allow card clicks
@@ -136,10 +144,15 @@ const game = {
     } else {
       alertHeading.textContent = 'Pip! Pip! Horray!';
     }
+
     // update button text
     playButton.textContent = 'Play Again';
+
     // reveal alert
     alert.classList.remove('alert-hide');
+
+    // reset cards
+    this.resetCards();
   }
 };
 
