@@ -1,17 +1,82 @@
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Francois One', sans-serif;
+  background-color: #e9e1c9;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+section {
+  padding: 32px 16px;
+  width: 300px;
+}
+
+h1 {
+  position: absolute;
+  bottom: 32px;
+  left: 16px;
+  color: white;
+  font-size: 60px;
+  font-family: 'Luckiest Guy', cursive;
+  line-height: 55px;
+  transform: rotate(-3deg);
+}
+
+h1::before {
+  content: '* match game *';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+  width: 100%;
+  color: white;
+  font-size: 1.05rem;
+  font-family: 'Francois One', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  transform: translatex(-50%);
+}
+
+h1::after {
+  content: 'Memory Monkey';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.9;
+  color: #cec5aa;
+}
+
+h2 {
+  font-weight: 700;
+  color: white;
+}
+
+h2 strong {
+  font-size: 2.5rem;
+  font-family: 'Luckiest Guy', cursive;
+  text-shadow: 3px 2px 0px rgba(150, 150, 150, 1);
 }
 
 .game-container {
-  position: absolute;
-  width: 1200px;
-  background-color: #333;
+  position: relative;
+  width: 1180px;
+  z-index: 1;
+  background-color: #c0c0c0;
   border-radius: 8px;
+  box-shadow: 8px 8px 0px 0px #999;
 }
 
 .game-container .monkey {
   position: absolute;
-  bottom: -34px;
-  left: 190px;
+  bottom: -42px;
+  left: 185px;
   z-index: 5;
 }
 
@@ -20,8 +85,10 @@ body {
   margin: 16px;
   padding: 8px;
   width: 848px;
+  z-index: 50;
   background-color: #e9e1c9;
   border-radius: 8px;
+  box-shadow: 8px 8px 0px 0px #999;
 }
 /*
 .card-stack::after {
@@ -45,7 +112,6 @@ body {
 .card-container {
   margin: 4px;
   background-color: #cec5aa;
-  /* border: 1px solid rgba(0, 0, 0, 0.125); */
   /* perspective: 600px; */
 }
 .card {
@@ -53,6 +119,9 @@ body {
   border: none;
   transition: opacity 0.5s ease, transform 0.5s;
   transform: translate(-4px, -4px) rotate(0deg);
+}
+.card:not(.card-matched) {
+  cursor: pointer;
 }
 #card-1 {
   z-index: 20;
