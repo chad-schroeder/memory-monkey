@@ -17,13 +17,13 @@ section {
 
 h1 {
   position: absolute;
-  bottom: 48px;
-  left: 12px;
+  bottom: 55px;
+  left: 8px;
   color: white;
-  font-size: 58px;
+  font-size: 55px;
   font-family: 'Luckiest Guy', cursive;
-  line-height: 55px;
-  transform: rotate(-5deg);
+  line-height: 52px;
+  transform: rotate(-3deg);
 }
 
 /*
@@ -32,10 +32,10 @@ h1::before {
   position: absolute;
   top: 100%;
   left: 50%;
-  margin-top: -20px;
+  margin-top: -24px;
   width: 100%;
   color: white;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   font-family: 'Francois One', sans-serif;
   text-transform: uppercase;
   text-align: center;
