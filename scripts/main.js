@@ -128,10 +128,9 @@ const game = {
     if (this.data.bestScore === '' || this.data.score < this.data.bestScore) {
       this.data.bestScore = this.data.score;
       bestScore.textContent = this.data.score;
+      // save score to local storage
+      localStorage.setItem('bestScore', this.data.score);
     }
-
-    // save score to local storage
-    localStorage.setItem('bestScore', this.data.score);
 
     // display random congratulations
     const messages = [
