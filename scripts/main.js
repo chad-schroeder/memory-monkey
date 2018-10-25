@@ -9,10 +9,15 @@ const game = {
     allowClick: false
   },
   init() {
+    // retrieve local storage, if exists
+    if (localStorage.getItem('bestScore')) {
+      bestScore.textContent = localStorage.getItem('bestScore');
+    }
+
     // populate card stack
     this.data.cards.forEach((card, index) => {
       const cardContainer = document.createElement('div');
-      cardContainer.classList.add('card-container', 'd-flex');
+      cardContainer.classList.add('card-container');
 
       const cardTemplate = `
         <div id=${`card-${index + 1}`} class="card card-stacked">
@@ -34,9 +39,11 @@ const game = {
   play() {
     // shuffle card data
     this.shuffle();
+    console.log(this.data.cards);
 
     // deal out cards
     const cards = document.querySelectorAll('.card');
+
     cards.forEach((card, index) => {
       card.setAttribute('data-match', this.data.cards[index]);
       card.classList.remove('card-stacked');
@@ -122,6 +129,9 @@ const game = {
       this.data.bestScore = this.data.score;
       bestScore.textContent = this.data.score;
     }
+
+    // save score to local storage
+    localStorage.setItem('bestScore', this.data.score);
 
     // display random congratulations
     const messages = [
