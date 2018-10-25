@@ -217,6 +217,7 @@ h2 strong {
 }
 .card.card-matched {
   opacity: 0;
+  pointer-events: none;
 }
 .card-body {
   position: relative;
