@@ -1,9 +1,23 @@
 body {
 }
 
+.game-container {
+  position: absolute;
+  width: 1200px;
+  background-color: #333;
+  border-radius: 8px;
+}
+
+.game-container .monkey {
+  position: absolute;
+  bottom: -34px;
+  left: 190px;
+  z-index: 5;
+}
+
 .card-stack {
   position: relative;
-  margin: 40px;
+  margin: 16px;
   padding: 8px;
   width: 848px;
   background-color: #e9e1c9;
