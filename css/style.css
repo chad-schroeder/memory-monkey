@@ -1,6 +1,27 @@
+body {
+}
+
 .card-stack {
   position: relative;
+  margin: 40px;
+  padding: 8px;
+  width: 848px;
+  background-color: #e9e1c9;
+  border-radius: 8px;
 }
+/*
+.card-stack::after {
+  content: '';
+  position: absolute;
+  bottom: 40px;
+  left: 900px;
+  width: 204px;
+  height: 154px;
+  z-index: 1;
+  border: 1px dashed black;
+  border-radius: 8px;
+}
+*/
 .card-container,
 .card {
   width: 200px;
@@ -9,12 +30,15 @@
 }
 .card-container {
   margin: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  perspective: 600px;
+  background-color: #cec5aa;
+  /* border: 1px solid rgba(0, 0, 0, 0.125); */
+  /* perspective: 600px; */
 }
 .card {
-  transition: opacity 0.5s ease;
-  transform: translate(-4px, -4px);
+  background-color: transparent;
+  border: none;
+  transition: opacity 0.5s ease, transform 0.5s;
+  transform: translate(-4px, -4px) rotate(0deg);
 }
 #card-1 {
   z-index: 20;
@@ -64,6 +88,56 @@
 #card-16 {
   z-index: 5;
 }
+/*
+#card-1.card-stacked {
+  transform: translate(898px, 435px) rotate(360deg);
+}
+#card-2.card-stacked {
+  transform: translate(693px, 437px) rotate(360deg);
+}
+#card-3.card-stacked {
+  transform: translate(488px, 439px) rotate(360deg);
+}
+#card-4.card-stacked {
+  transform: translate(282px, 441px) rotate(360deg);
+}
+#card-5.card-stacked {
+  transform: translate(904px, 282px) rotate(360deg);
+}
+#card-6.card-stacked {
+  transform: translate(696px, 282px) rotate(360deg);
+}
+#card-7.card-stacked {
+  transform: translate(486px, 282px) rotate(360deg);
+}
+#card-8.card-stacked {
+  transform: translate(282px, 282px) rotate(360deg);
+}
+#card-9.card-stacked {
+  transform: translate(904px, 120px) rotate(360deg);
+}
+#card-10.card-stacked {
+  transform: translate(696px, 120px) rotate(360deg);
+}
+#card-11.card-stacked {
+  transform: translate(486px, 120px) rotate(360deg);
+}
+#card-12.card-stacked {
+  transform: translate(282px, 120px) rotate(360deg);
+}
+#card-13.card-stacked {
+  transform: translate(904px, -40px) rotate(360deg);
+}
+#card-14.card-stacked {
+  transform: translate(696px, -40px) rotate(360deg);
+}
+#card-15.card-stacked {
+  transform: translate(486px, -40px) rotate(360deg);
+}
+#card-16.card-stacked {
+  transform: translate(282px, -40px) rotate(360deg);
+}
+*/
 .card.card-selected {
   background-color: lightblue;
 }
@@ -83,6 +157,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
+  background-color: white;
   backface-visibility: hidden;
 }
 .card-face-front,
@@ -90,33 +165,47 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  border: 8px solid white;
   border-radius: 8px;
 }
-.card-face-front {
+.card-face-front::after,
+.card-face-back::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+}
+.card-face-front::after {
   background-image: url(../images/jungle-eyes-static.jpg);
 }
-.card[data-match='1'] .card-face-back {
+.card[data-match='1'] .card-face-back::after {
   background-image: url(../images/monkey-1.jpg);
 }
-.card[data-match='2'] .card-face-back {
+.card[data-match='2'] .card-face-back::after {
   background-image: url(../images/monkey-2.jpg);
 }
-.card[data-match='3'] .card-face-back {
+.card[data-match='3'] .card-face-back::after {
   background-image: url(../images/monkey-3.jpg);
 }
-.card[data-match='4'] .card-face-back {
+.card[data-match='4'] .card-face-back::after {
   background-image: url(../images/monkey-4.jpg);
 }
-.card[data-match='5'] .card-face-back {
+.card[data-match='5'] .card-face-back::after {
   background-image: url(../images/monkey-5.jpg);
 }
-.card[data-match='6'] .card-face-back {
+.card[data-match='6'] .card-face-back::after {
   background-image: url(../images/monkey-6.jpg);
 }
-.card[data-match='7'] .card-face-back {
+.card[data-match='7'] .card-face-back::after {
   background-image: url(../images/monkey-7.jpg);
 }
-.card[data-match='8'] .card-face-back {
+.card[data-match='8'] .card-face-back::after {
   background-image: url(../images/monkey-8.jpg);
 }
 .card-face-back {

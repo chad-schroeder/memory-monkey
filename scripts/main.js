@@ -4,7 +4,7 @@ const game = {
     matched: 0,
     storedId: '',
     storedMatch: '',
-    totalClicks: 0,
+    score: 0,
     allowClick: true
   },
   init() {
@@ -14,10 +14,11 @@ const game = {
     // populate card deck
     this.data.cards.forEach((card, index) => {
       const cardContainer = document.createElement('div');
-      cardContainer.classList.add('card-container');
+      cardContainer.classList.add('card-container', 'd-flex');
 
       const cardTemplate = `
-        <div class="card" id=${`card-${index + 1}`} data-match=${`${card}`}>
+        <div class="card card-stacked" id=${`card-${index +
+          1}`} data-match=${`${card}`}>
           <div class="card-body">
             <div class="card-face card-face-front"></div>
             <div class="card-face card-face-back"></div>
@@ -36,11 +37,12 @@ const game = {
   play() {
     // deal out cards
     const cards = document.querySelectorAll('.card');
-    cards.forEach((card, index) => card.classList.add(`order-${index + 1}`));
+    cards.forEach(card => card.classList.remove('card-stacked'));
   },
   cardSelection(currentId, currentMatch) {
-    // update totalClicks
-    this.data.totalClicks += 1;
+    // update score
+    this.data.score += 1;
+    score.textContent = this.data.score;
 
     // if no previous stored card exists, set to this one
     if (!this.data.storedId) {
@@ -109,12 +111,12 @@ const game = {
   },
   gameOver() {
     console.log('Game over!');
-    console.log(`Clicks: ${this.data.totalClicks}`);
-    console.log('Perfect score is 16');
   }
 };
 
 const deck = document.querySelector('.card-stack');
+const score = document.querySelector('.score');
+
 const cardSelection = event => {
   if (!event.target.closest('.card')) return;
   console.log(event.target);
