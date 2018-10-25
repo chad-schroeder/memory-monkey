@@ -5,6 +5,7 @@ const game = {
     storedId: '',
     storedMatch: '',
     score: 0,
+    bestScore: '',
     allowClick: true
   },
   init() {
@@ -111,6 +112,14 @@ const game = {
   },
   gameOver() {
     console.log('Game over!');
+
+    // new best score
+    if (this.data.bestScore === '' || this.data.score < this.data.bestScore) {
+      this.data.bestScore = this.data.score;
+      bestScore.textContent = this.data.score;
+    }
+
+    // display random congratulations
     const messages = [
       'Jolly good show!',
       'Well done, Old Bean!',
@@ -125,6 +134,7 @@ const game = {
 
 const deck = document.querySelector('.card-stack');
 const score = document.querySelector('.score');
+const bestScore = document.querySelector('.best-score');
 const alert = document.querySelector('.alert');
 const alertHeading = alert.querySelector('.alert-heading');
 
