@@ -34,17 +34,16 @@ const game = {
   },
   play() {
     // close alert box
-    alert.style.display = 'none';
-
-    // prevent clicks
-    this.data.allowClick = false;
+    alert.classList.add('fade-out');
+    setTimeout(() => {
+      alert.classList.add('d-none');
+    }, 700);
 
     // add loading state
     stack.classList.add('card-stack-loading');
 
     // shuffle card data
     this.shuffle();
-    console.log(this.data.cards);
 
     // deal out cards
     const cards = document.querySelectorAll('.card');
@@ -66,13 +65,12 @@ const game = {
 
     // if no previous stored card exists, set to this one
     if (!this.data.storedId) {
-      console.log('new card');
       this.data.storedId = currentId;
       this.data.storedMatch = currentMatch;
     } else {
-      console.log('checking for match...');
       // prevent further clicks
       this.data.allowClick = false;
+
       // check for a match
       if (this.data.storedMatch === currentMatch) {
         this.match(currentId, currentMatch);
@@ -82,8 +80,6 @@ const game = {
     }
   },
   match(currentId, currentMatch) {
-    console.log('match!');
-
     // update matched count
     this.data.matched += 1;
 
@@ -100,15 +96,13 @@ const game = {
     }
   },
   unmatch(currentId, currentMatch) {
-    console.log('no match');
-
     // flip selected cards back over after 1 second
     setTimeout(() => {
       [
         stack.querySelector(`#${this.data.storedId}`),
         stack.querySelector(`#${currentId}`)
       ].forEach(card => {
-        card.classList.remove('card-selected', 'is-flipped');
+        card.classList.remove('is-flipped');
       });
 
       // reset stored data
@@ -139,17 +133,6 @@ const game = {
       // save score to local storage
       localStorage.setItem('bestScore', this.data.score);
     }
-
-    // display random congratulations
-    const messages = [
-      'Jolly good show!',
-      'Well done, Old Bean!',
-      'Pip! Pip! Hooray!',
-      'Absolutely spiffing!',
-      'By Jove, sensational!'
-    ];
-    alertHeading.textContent =
-      messages[Math.floor(Math.random() * messages.length)];
   }
 };
 
@@ -167,7 +150,7 @@ const cardSelection = event => {
   const cardId = parent.getAttribute('id');
   const cardMatch = parent.getAttribute('data-match');
 
-  if (game.data.storedId !== cardId && game.data.allowClick) {
+  if (game.data.allowClick && game.data.storedId !== cardId) {
     parent.classList.add('is-flipped');
     game.cardSelection(cardId, cardMatch);
   }
@@ -175,7 +158,6 @@ const cardSelection = event => {
 
 const playGame = event => {
   if (!event.target.closest('[data-game=play]')) return;
-
   game.play();
 };
 
