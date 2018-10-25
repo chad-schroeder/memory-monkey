@@ -77,6 +77,20 @@ h2 strong {
   font-size: 1.6rem;
 }
 
+.alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  width: 550px;
+  background-color: white;
+  border: 8px solid white;
+  border-radius: 16px;
+  box-shadow: 8px 8px 0px 0px #999;
+  transform: translate(-50%, -50%);
+}
+
+/* game container */
 .game-container {
   position: relative;
   width: 1180px;
@@ -92,6 +106,8 @@ h2 strong {
   left: 185px;
   z-index: 5;
 }
+
+/* cards */
 .card-stack {
   position: relative;
   margin: 16px;
@@ -102,6 +118,7 @@ h2 strong {
   border-radius: 8px;
   box-shadow: 8px 8px 0px 0px #999;
 }
+
 .card-container,
 .card {
   width: 200px;
@@ -290,16 +307,4 @@ h2 strong {
 }
 .card.is-flipped .card-body {
   transform: rotateY(180deg);
-}
-.alert {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 100;
-  width: 550px;
-  background-color: white;
-  border: 8px solid white;
-  border-radius: 16px;
-  box-shadow: 8px 8px 0px 0px #999;
-  transform: translate(-50%, -50%);
 }

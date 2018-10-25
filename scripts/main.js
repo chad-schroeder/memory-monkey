@@ -29,12 +29,18 @@ const game = {
       `;
 
       cardContainer.innerHTML = cardTemplate;
-      deck.appendChild(cardContainer);
+      stack.appendChild(cardContainer);
     });
   },
   play() {
     // close alert box
     alert.style.display = 'none';
+
+    // prevent clicks
+    this.data.allowClick = false;
+
+    // add loading state
+    stack.classList.add('card-stack-loading');
 
     // shuffle card data
     this.shuffle();
@@ -42,12 +48,15 @@ const game = {
 
     // deal out cards
     const cards = document.querySelectorAll('.card');
-
     cards.forEach((card, index) => {
       card.setAttribute('data-match', this.data.cards[index]);
       card.classList.remove('card-stacked');
     });
 
+    // remove starting classes
+    stack.classList.remove('card-stack-loading');
+
+    // allow card clicks
     this.data.allowClick = true;
   },
   cardSelection(currentId, currentMatch) {
@@ -80,11 +89,15 @@ const game = {
 
     // update classes on matched cards
     [
-      deck.querySelector(`#${this.data.storedId}`),
-      deck.querySelector(`#${currentId}`)
+      stack.querySelector(`#${this.data.storedId}`),
+      stack.querySelector(`#${currentId}`)
     ].forEach(card => card.classList.add('card-matched'));
 
-    this.resetCards();
+    if (this.data.matched === 8) {
+      this.gameOver();
+    } else {
+      this.resetCards();
+    }
   },
   unmatch(currentId, currentMatch) {
     console.log('no match');
@@ -92,8 +105,8 @@ const game = {
     // flip selected cards back over after 1 second
     setTimeout(() => {
       [
-        deck.querySelector(`#${this.data.storedId}`),
-        deck.querySelector(`#${currentId}`)
+        stack.querySelector(`#${this.data.storedId}`),
+        stack.querySelector(`#${currentId}`)
       ].forEach(card => {
         card.classList.remove('card-selected', 'is-flipped');
       });
@@ -103,12 +116,9 @@ const game = {
     }, 1000);
   },
   resetCards() {
-    if (this.data.matched === 8) {
-      this.gameOver();
-    } else {
-      this.data.storedId = '';
-      this.data.storedMatch = '';
-    }
+    this.data.storedId = '';
+    this.data.storedMatch = '';
+    this.data.allowClick = true;
   },
   shuffle(cards) {
     // Fisher-Yates shuffle algorithm
@@ -143,7 +153,7 @@ const game = {
   }
 };
 
-const deck = document.querySelector('.card-stack');
+const stack = document.querySelector('.card-stack');
 const score = document.querySelector('.score');
 const bestScore = document.querySelector('.best-score');
 const alert = document.querySelector('.alert');
