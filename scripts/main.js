@@ -111,11 +111,22 @@ const game = {
   },
   gameOver() {
     console.log('Game over!');
+    const messages = [
+      'Jolly good show!',
+      'Well done, Old Bean!',
+      'Pip! Pip! Hooray!',
+      'Absolutely spiffing!',
+      'By Jove, sensational!'
+    ];
+    alertHeading.textContent =
+      messages[Math.floor(Math.random() * messages.length)];
   }
 };
 
 const deck = document.querySelector('.card-stack');
 const score = document.querySelector('.score');
+const alert = document.querySelector('.alert');
+const alertHeading = alert.querySelector('.alert-heading');
 
 const cardSelection = event => {
   if (!event.target.closest('.card')) return;
