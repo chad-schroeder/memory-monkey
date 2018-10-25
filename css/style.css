@@ -94,13 +94,12 @@ h2 strong {
 .card-stack::after {
   content: '';
   position: absolute;
-  bottom: 40px;
-  left: 900px;
+  top: 50%;
+  left: 50%;
   width: 204px;
   height: 154px;
-  z-index: 1;
-  border: 1px dashed black;
-  border-radius: 8px;
+  border: 1px solid black;
+  transform: translate(-50%, -50%);
 }
 */
 .card-container,
@@ -117,7 +116,7 @@ h2 strong {
 .card {
   background-color: transparent;
   border: none;
-  transition: opacity 0.5s ease, transform 0.5s;
+  transition: all 0.5s ease;
   transform: translate(-4px, -4px) rotate(0deg);
 }
 .card:not(.card-matched) {
@@ -171,56 +170,54 @@ h2 strong {
 #card-16 {
   z-index: 5;
 }
-/*
 #card-1.card-stacked {
-  transform: translate(898px, 435px) rotate(360deg);
+  transform: translate(312px, 237px) rotate(360deg);
 }
 #card-2.card-stacked {
-  transform: translate(693px, 437px) rotate(360deg);
+  transform: translate(104px, 237px) rotate(360deg);
 }
 #card-3.card-stacked {
-  transform: translate(488px, 439px) rotate(360deg);
+  transform: translate(-104px, 237px) rotate(360deg);
 }
 #card-4.card-stacked {
-  transform: translate(282px, 441px) rotate(360deg);
+  transform: translate(-312px, 237px) rotate(360deg);
 }
 #card-5.card-stacked {
-  transform: translate(904px, 282px) rotate(360deg);
+  transform: translate(312px, 79px) rotate(360deg);
 }
 #card-6.card-stacked {
-  transform: translate(696px, 282px) rotate(360deg);
+  transform: translate(104px, 79px) rotate(360deg);
 }
 #card-7.card-stacked {
-  transform: translate(486px, 282px) rotate(360deg);
+  transform: translate(-104px, 79px) rotate(360deg);
 }
 #card-8.card-stacked {
-  transform: translate(282px, 282px) rotate(360deg);
+  transform: translate(-312px, 79px) rotate(360deg);
 }
 #card-9.card-stacked {
-  transform: translate(904px, 120px) rotate(360deg);
+  transform: translate(312px, -79px) rotate(360deg);
 }
 #card-10.card-stacked {
-  transform: translate(696px, 120px) rotate(360deg);
+  transform: translate(104px, -79px) rotate(360deg);
 }
 #card-11.card-stacked {
-  transform: translate(486px, 120px) rotate(360deg);
+  transform: translate(-104px, -79px) rotate(360deg);
 }
 #card-12.card-stacked {
-  transform: translate(282px, 120px) rotate(360deg);
+  transform: translate(-312px, -79px) rotate(360deg);
 }
 #card-13.card-stacked {
-  transform: translate(904px, -40px) rotate(360deg);
+  transform: translate(312px, -237px) rotate(360deg);
 }
 #card-14.card-stacked {
-  transform: translate(696px, -40px) rotate(360deg);
+  transform: translate(104px, -237px) rotate(360deg);
 }
 #card-15.card-stacked {
-  transform: translate(486px, -40px) rotate(360deg);
+  transform: translate(-104px, -237px) rotate(360deg);
 }
 #card-16.card-stacked {
-  transform: translate(282px, -40px) rotate(360deg);
+  transform: translate(-312px, -237px) rotate(360deg);
 }
-*/
 .card.card-selected {
   background-color: lightblue;
 }
