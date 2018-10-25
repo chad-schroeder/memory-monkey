@@ -90,6 +90,7 @@ h2 strong {
   border-radius: 8px;
   box-shadow: 8px 8px 0px 0px #999;
 }
+
 /*
 .card-stack::after {
   content: '';
@@ -98,10 +99,13 @@ h2 strong {
   left: 50%;
   width: 204px;
   height: 154px;
-  border: 1px solid black;
+  background-color: white;
+  border: 1px solid #cec5aa;
+  border-radius: 8px;
   transform: translate(-50%, -50%);
 }
 */
+
 .card-container,
 .card {
   width: 200px;
@@ -217,12 +221,6 @@ h2 strong {
 }
 #card-16.card-stacked {
   transform: translate(-312px, -237px) rotate(360deg);
-}
-.card.card-selected {
-  background-color: lightblue;
-}
-.card.card-selected .card-body {
-  transition: background-color 0.3s ease;
 }
 .card.card-matched {
   opacity: 0;
