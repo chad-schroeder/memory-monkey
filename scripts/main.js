@@ -34,10 +34,7 @@ const game = {
   },
   play() {
     // close alert box
-    alert.classList.add('fade-out');
-    setTimeout(() => {
-      alert.classList.add('d-none');
-    }, 700);
+    alert.classList.add('alert-hide');
 
     // add loading state
     stack.classList.add('card-stack-loading');
@@ -124,15 +121,25 @@ const game = {
     }
   },
   gameOver() {
-    console.log('Game over!');
-
-    // new best score
-    if (this.data.bestScore === '' || this.data.score < this.data.bestScore) {
+    // check for new best score
+    if (!this.data.bestScore || this.data.score < this.data.bestScore) {
       this.data.bestScore = this.data.score;
       bestScore.textContent = this.data.score;
-      // save score to local storage
       localStorage.setItem('bestScore', this.data.score);
     }
+
+    // set game over message heading
+    if (this.data.score <= 32) {
+      alertHeading.textContent = 'Outstanding!';
+    } else if (this.data.score <= 40) {
+      alertHeading.textContent = 'Well done!';
+    } else {
+      alertHeading.textContent = 'Pip! Pip! Horray!';
+    }
+    // update button text
+    playButton.textContent = 'Play Again';
+    // reveal alert
+    alert.classList.remove('alert-hide');
   }
 };
 
