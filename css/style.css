@@ -17,8 +17,8 @@ section {
 
 h1 {
   position: absolute;
-  bottom: 32px;
-  left: 16px;
+  bottom: 26px;
+  left: -28px;
   color: white;
   font-size: 60px;
   font-family: 'Luckiest Guy', cursive;
@@ -27,12 +27,11 @@ h1 {
 }
 
 h1::before {
-  content: '* match game *';
+  content: '* a little match game *';
   position: absolute;
   top: 100%;
   left: 50%;
   margin-top: -20px;
-  margin-left: -20px;
   width: 100%;
   color: white;
   font-size: 1.05rem;

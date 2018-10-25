@@ -31,12 +31,11 @@ const game = {
       cardContainer.innerHTML = cardTemplate;
       deck.appendChild(cardContainer);
     });
-
-    setTimeout(() => {
-      this.play();
-    }, 2000);
   },
   play() {
+    // close alert box
+    alert.style.display = 'none';
+
     // shuffle card data
     this.shuffle();
     console.log(this.data.cards);
@@ -109,7 +108,6 @@ const game = {
     } else {
       this.data.storedId = '';
       this.data.storedMatch = '';
-      this.data.allowClick = true;
     }
   },
   shuffle(cards) {
@@ -150,10 +148,10 @@ const score = document.querySelector('.score');
 const bestScore = document.querySelector('.best-score');
 const alert = document.querySelector('.alert');
 const alertHeading = alert.querySelector('.alert-heading');
+const playButton = alert.querySelector('button');
 
 const cardSelection = event => {
   if (!event.target.closest('.card')) return;
-  console.log(event.target);
 
   const parent = event.target.parentNode.parentNode;
   const cardId = parent.getAttribute('id');
@@ -165,10 +163,17 @@ const cardSelection = event => {
   }
 };
 
+const playGame = event => {
+  if (!event.target.closest('[data-game=play]')) return;
+
+  game.play();
+};
+
 document.addEventListener(
   'click',
   function(event) {
     cardSelection(event);
+    playGame(event);
   },
   false
 );
