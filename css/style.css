@@ -54,7 +54,10 @@ h1::after {
   color: #cec5aa;
 }
 
-h2, h3, h4, .btn {
+h2,
+h3,
+h4,
+.btn {
   font-family: 'Francois One', sans-serif;
 }
 
@@ -108,7 +111,7 @@ h2 strong {
 }
 .card-container {
   margin: 4px;
-  background-color: #cec5aa;/
+  background-color: #cec5aa;
 }
 .card {
   background-color: transparent;
@@ -166,6 +169,9 @@ h2 strong {
 }
 #card-16 {
   z-index: 5;
+}
+.card.card-stacked {
+  pointer-events: none;
 }
 #card-1.card-stacked {
   transform: translate(312px, 237px) rotate(360deg);

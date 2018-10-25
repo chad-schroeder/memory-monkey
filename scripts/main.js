@@ -6,20 +6,16 @@ const game = {
     storedMatch: '',
     score: 0,
     bestScore: '',
-    allowClick: true
+    allowClick: false
   },
   init() {
-    // shuffle card data
-    this.shuffle();
-
-    // populate card deck
+    // populate card stack
     this.data.cards.forEach((card, index) => {
       const cardContainer = document.createElement('div');
       cardContainer.classList.add('card-container', 'd-flex');
 
       const cardTemplate = `
-        <div class="card card-stacked" id=${`card-${index +
-          1}`} data-match=${`${card}`}>
+        <div id=${`card-${index + 1}`} class="card card-stacked">
           <div class="card-body">
             <div class="card-face card-face-front"></div>
             <div class="card-face card-face-back"></div>
@@ -36,9 +32,17 @@ const game = {
     }, 2000);
   },
   play() {
+    // shuffle card data
+    this.shuffle();
+
     // deal out cards
     const cards = document.querySelectorAll('.card');
-    cards.forEach(card => card.classList.remove('card-stacked'));
+    cards.forEach((card, index) => {
+      card.setAttribute('data-match', this.data.cards[index]);
+      card.classList.remove('card-stacked');
+    });
+
+    this.data.allowClick = true;
   },
   cardSelection(currentId, currentMatch) {
     // update score
