@@ -4,6 +4,7 @@ body {
   align-items: center;
   height: 100vh;
   font-family: sans-serif;
+  text-align: center;
   background-color: #e9e1c9;
   background-size: cover;
   background-repeat: no-repeat;
@@ -55,7 +56,6 @@ h1::after {
 
 h2, h3, h4, .btn {
   font-family: 'Francois One', sans-serif;
-  text-align: center;
 }
 
 h2 {
@@ -297,7 +297,4 @@ h2 strong {
   border-radius: 16px;
   box-shadow: 8px 8px 0px 0px #999;
   transform: translate(-50%, -50%);
-}
-.alert-heading {
-  text-align: center;
 }
