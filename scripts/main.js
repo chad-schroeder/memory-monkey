@@ -155,11 +155,8 @@ const game = {
   },
 
   gameOver() {
-    console.log(this.data.bestScore);
-
     // check for new best score
-    if (this.data.score < this.data.bestScore || this.data.bestScore = '--') {
-      console.log('here');
+    if (this.data.score < this.data.bestScore || this.data.bestScore === '--') {
       this.data.bestScore = this.data.score;
       bestScore.textContent = this.data.score;
       localStorage.setItem('bestScore', this.data.score);
