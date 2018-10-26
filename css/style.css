@@ -253,6 +253,7 @@ h2 strong {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
+
 .card-face-front,
 .card-face-back {
   background-repeat: no-repeat;
@@ -262,51 +263,39 @@ h2 strong {
   border-radius: 8px;
 }
 
-.card-face-back::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  border-radius: 8px;
-}
 .card-face-front {
   background-image: url(../images/jungle-card-back.png);
 }
-.card[data-match='1'] .card-face-back::after {
+.card[data-match='1'] .card-face-back {
   background-image: url(../images/monkey-1.jpg);
 }
-.card[data-match='2'] .card-face-back::after {
+.card[data-match='2'] .card-face-back {
   background-image: url(../images/monkey-2.jpg);
 }
-.card[data-match='3'] .card-face-back::after {
+.card[data-match='3'] .card-face-back {
   background-image: url(../images/monkey-3.jpg);
 }
-.card[data-match='4'] .card-face-back::after {
+.card[data-match='4'] .card-face-back {
   background-image: url(../images/monkey-4.jpg);
 }
-.card[data-match='5'] .card-face-back::after {
+.card[data-match='5'] .card-face-back {
   background-image: url(../images/monkey-5.jpg);
 }
-.card[data-match='6'] .card-face-back::after {
+.card[data-match='6'] .card-face-back {
   background-image: url(../images/monkey-6.jpg);
 }
-.card[data-match='7'] .card-face-back::after {
+.card[data-match='7'] .card-face-back {
   background-image: url(../images/monkey-7.jpg);
 }
-.card[data-match='8'] .card-face-back::after {
+.card[data-match='8'] .card-face-back {
   background-image: url(../images/monkey-8.jpg);
 }
+
 .card-face-back {
-  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
+
 .card.is-flipped .card-body {
-  -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
 
