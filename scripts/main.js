@@ -122,11 +122,10 @@ const game = {
   unmatch(currentId, currentMatch) {
     // flip selected cards back over after 1 second
     setTimeout(() => {
+      this.resetCards();
+
       const cards = stack.querySelectorAll('.is-flipped');
       cards.forEach(card => card.classList.remove('is-flipped'));
-
-      // reset stored data
-      this.resetCards();
     }, 1000);
   },
 
