@@ -126,6 +126,11 @@ h2 strong {
   pointer-events: none;
 }
 
+.alert-heading {
+  color: #79725f;
+  font-size: 1.6rem;
+}
+
 /* game container */
 .game-container {
   position: relative;
