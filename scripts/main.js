@@ -8,6 +8,7 @@ const game = {
     bestScore: '',
     allowClick: false
   },
+
   init() {
     // retrieve local storage, if exists
     if (localStorage.getItem('bestScore')) {
@@ -32,37 +33,58 @@ const game = {
       stack.appendChild(cardContainer);
     });
   },
+
   play() {
-    // reset game data
+    // reset game data, if replay
     this.data.matched = 0;
     this.data.score = 0;
     score.textContent = this.data.score;
+    const cards = document.querySelectorAll('.card');
 
     // hide alert box
     alert.classList.add('alert-hide');
 
-    // add loading state to card stack
-    stack.classList.add('card-stack-loading');
-
     // shuffle card data
     this.shuffle();
 
-    // apply card matching and deal out cards
-    const cards = document.querySelectorAll('.card');
+    // apply card matching and remove previous game classes, if any
     cards.forEach((card, index) => {
       // clear out previous game card classes, if exists
       card.classList.remove('card-matched', 'is-flipped');
-
+      card.classList.add('card-stacked');
       card.setAttribute('data-match', this.data.cards[index]);
-      card.classList.remove('card-stacked');
     });
 
-    // card stack loading finished
+    // begin card shuffle animation
     stack.classList.remove('card-stack-loading');
+    stack.classList.add('card-stack-shuffling');
 
-    // allow card clicks
-    this.data.allowClick = true;
+    // place animated top card
+    setTimeout(() => {
+      const topCardContainer = document.createElement('div');
+      topCardContainer.classList.add('card-container', 'card-animated');
+      const cardTemplate = `
+        <div class="card card-stacked">
+          <div class="card-body">
+            <div class="card-face card-face-front"></div>
+          </div>
+        </div>
+      `;
+      topCardContainer.innerHTML = cardTemplate;
+      stack.append(topCardContainer);
+    }, 1200);
+
+    setTimeout(() => {
+      stack.querySelector('.card-animated').remove();
+
+      //  deal out cards
+      cards.forEach(card => card.classList.remove('card-stacked'));
+
+      // allow card clicks
+      this.data.allowClick = true;
+    }, 4500);
   },
+
   cardSelection(currentId, currentMatch) {
     // update score
     this.data.score += 1;
@@ -84,6 +106,7 @@ const game = {
       }
     }
   },
+
   match(currentId, currentMatch) {
     // update matched count
     this.data.matched += 1;
@@ -100,6 +123,7 @@ const game = {
       this.resetCards();
     }
   },
+
   unmatch(currentId, currentMatch) {
     // flip selected cards back over after 1 second
     setTimeout(() => {
@@ -114,11 +138,13 @@ const game = {
       this.resetCards();
     }, 1000);
   },
+
   resetCards() {
     this.data.storedId = '';
     this.data.storedMatch = '';
     this.data.allowClick = true;
   },
+
   shuffle(cards) {
     // Fisher-Yates shuffle algorithm
     for (let i = this.data.cards.length - 1; i > 0; i -= 1) {
@@ -128,6 +154,7 @@ const game = {
       this.data.cards[randomIndex] = placeholder;
     }
   },
+
   gameOver() {
     // check for new best score
     if (!this.data.bestScore || this.data.score < this.data.bestScore) {
@@ -136,7 +163,7 @@ const game = {
       localStorage.setItem('bestScore', this.data.score);
     }
 
-    // set game over message heading
+    // update alert message heading
     if (this.data.score <= 32) {
       alertHeading.textContent = 'Outstanding!';
     } else if (this.data.score <= 40) {
@@ -162,7 +189,6 @@ const bestScore = document.querySelector('.best-score');
 const alert = document.querySelector('.alert');
 const alertHeading = alert.querySelector('.alert-heading');
 const playButton = alert.querySelector('button');
-
 const cardSelection = event => {
   if (!event.target.closest('.card')) return;
 
@@ -175,7 +201,6 @@ const cardSelection = event => {
     game.cardSelection(cardId, cardMatch);
   }
 };
-
 const playGame = event => {
   if (!event.target.closest('[data-game=play]')) return;
   game.play();

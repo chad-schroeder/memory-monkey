@@ -2,12 +2,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   height: 100vh;
   font-family: sans-serif;
   text-align: center;
   background-color: #e9e1c9;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+body::after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  content: url(../images/jungle-eyes.gif);
 }
 
 section {
@@ -75,6 +85,7 @@ h2 strong {
 .btn {
   padding: 0.4rem 1.6rem;
   font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .alert {
@@ -127,25 +138,29 @@ h2 strong {
   perspective-origin: 50% 50%;
 }
 
+.card-stack-loading .card {
+  opacity: 0;
+}
+
 .card-container,
 .card {
   width: 200px;
   height: 150px;
   border-radius: 8px;
 }
+
 .card-container {
   margin: 4px;
   background-color: #cec5aa;
 }
 .card {
+  cursor: pointer;
   background-color: transparent;
   border: none;
   transition: all 0.5s ease;
   transform: translate(-4px, -4px) rotate(0deg);
 }
-.card:not(.card-matched) {
-  cursor: pointer;
-}
+
 #card-1 {
   z-index: 20;
 }
@@ -194,67 +209,14 @@ h2 strong {
 #card-16 {
   z-index: 5;
 }
-.card.card-stacked {
-  pointer-events: none;
-}
-#card-1.card-stacked {
-  transform: translate(312px, 237px) rotate(360deg);
-}
-#card-2.card-stacked {
-  transform: translate(104px, 237px) rotate(360deg);
-}
-#card-3.card-stacked {
-  transform: translate(-104px, 237px) rotate(360deg);
-}
-#card-4.card-stacked {
-  transform: translate(-312px, 237px) rotate(360deg);
-}
-#card-5.card-stacked {
-  transform: translate(312px, 79px) rotate(360deg);
-}
-#card-6.card-stacked {
-  transform: translate(104px, 79px) rotate(360deg);
-}
-#card-7.card-stacked {
-  transform: translate(-104px, 79px) rotate(360deg);
-}
-#card-8.card-stacked {
-  transform: translate(-312px, 79px) rotate(360deg);
-}
-#card-9.card-stacked {
-  transform: translate(312px, -79px) rotate(360deg);
-}
-#card-10.card-stacked {
-  transform: translate(104px, -79px) rotate(360deg);
-}
-#card-11.card-stacked {
-  transform: translate(-104px, -79px) rotate(360deg);
-}
-#card-12.card-stacked {
-  transform: translate(-312px, -79px) rotate(360deg);
-}
-#card-13.card-stacked {
-  transform: translate(312px, -237px) rotate(360deg);
-}
-#card-14.card-stacked {
-  transform: translate(104px, -237px) rotate(360deg);
-}
-#card-15.card-stacked {
-  transform: translate(-104px, -237px) rotate(360deg);
-}
-#card-16.card-stacked {
-  transform: translate(-312px, -237px) rotate(360deg);
-}
-.card.card-matched {
-  opacity: 0;
-  pointer-events: none;
-}
+
 .card-body {
   position: relative;
   padding: 0;
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
+
 .card-face {
   position: absolute;
   height: 100%;
@@ -315,4 +277,86 @@ h2 strong {
 }
 .card.is-flipped .card-body {
   transform: rotateY(180deg);
+}
+
+/* card animated */
+.card-animated {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 50;
+  transform: translate(-50%, -50%);
+}
+
+.card-animated .card-face-front::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: url(../images/jungle-eyes.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* card matched */
+.card.card-matched {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* card stacked */
+.card.card-stacked {
+  pointer-events: none;
+}
+#card-1.card-stacked {
+  transform: translate(312px, 237px) rotate(360deg);
+}
+#card-2.card-stacked {
+  transform: translate(104px, 237px) rotate(360deg);
+}
+#card-3.card-stacked {
+  transform: translate(-104px, 237px) rotate(360deg);
+}
+#card-4.card-stacked {
+  transform: translate(-312px, 237px) rotate(360deg);
+}
+#card-5.card-stacked {
+  transform: translate(312px, 79px) rotate(360deg);
+}
+#card-6.card-stacked {
+  transform: translate(104px, 79px) rotate(360deg);
+}
+#card-7.card-stacked {
+  transform: translate(-104px, 79px) rotate(360deg);
+}
+#card-8.card-stacked {
+  transform: translate(-312px, 79px) rotate(360deg);
+}
+#card-9.card-stacked {
+  transform: translate(312px, -79px) rotate(360deg);
+}
+#card-10.card-stacked {
+  transform: translate(104px, -79px) rotate(360deg);
+}
+#card-11.card-stacked {
+  transform: translate(-104px, -79px) rotate(360deg);
+}
+#card-12.card-stacked {
+  transform: translate(-312px, -79px) rotate(360deg);
+}
+#card-13.card-stacked {
+  transform: translate(312px, -237px) rotate(360deg);
+}
+#card-14.card-stacked {
+  transform: translate(104px, -237px) rotate(360deg);
+}
+#card-15.card-stacked {
+  transform: translate(-104px, -237px) rotate(360deg);
+}
+#card-16.card-stacked {
+  transform: translate(-312px, -237px) rotate(360deg);
 }
