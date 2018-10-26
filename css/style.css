@@ -247,6 +247,7 @@ h2 strong {
   height: 100%;
   width: 100%;
   background-color: white;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 .card-face-front,
