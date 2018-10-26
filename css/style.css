@@ -7,7 +7,7 @@ body {
   font-family: sans-serif;
   text-align: center;
   background-color: #f8f2e4;
-  background-image: url(../images/noisebg.png);
+  background-image: url(../images/fancy_deboss.png);
 }
 
 body::after {
@@ -113,7 +113,7 @@ h2 strong {
   width: 1100px;
   z-index: 1;
   background-color: #cac0a7;
-  background-image: url(../images/noisebg.png);
+
   border-radius: 8px;
 }
 
@@ -132,7 +132,6 @@ h2 strong {
   width: 848px;
   z-index: 900;
   background-color: #e9e1c9;
-  background-image: url(../images/noisebg.png);
   border-radius: 8px;
   perspective: 500px;
   perspective-origin: 50% 50%;
@@ -152,7 +151,7 @@ h2 strong {
 .card-container {
   margin: 4px;
   background-color: #cec5aa;
-  background-image: url(../images/noisebg.png);
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQklEQVQYV2P8//+/JCMj43MGPACsBiSPTzFMDqwQl2JkA+AK0RWj24KiEKYYRKO7mzyFyNbhtBqbzzE8Q1TwEBvgADC3RjcXfBsqAAAAAElFTkSuQmCC);
 }
 .card {
   cursor: pointer;
