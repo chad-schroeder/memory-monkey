@@ -155,6 +155,16 @@ const game = {
   },
 
   gameOver() {
+    // check for new best score
+    if (
+      this.data.score < this.data.bestScore ||
+      Number.isNaN(this.data.bestScore)
+    ) {
+      this.data.bestScore = this.data.score;
+      bestScore.textContent = this.data.score;
+      localStorage.setItem('bestScore', this.data.score);
+    }
+
     // update alert message heading
     if (this.data.score <= 32) {
       alertHeading.textContent = 'Outstanding!';
