@@ -7,8 +7,6 @@ body {
   font-family: sans-serif;
   text-align: center;
   background-color: #f8f2e4;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 body::after {
@@ -23,6 +21,7 @@ body::after {
 section {
   padding: 32px 16px;
   width: 220px;
+  border-radius: 8px;
 }
 
 h1 {
@@ -60,7 +59,7 @@ h1::after {
   bottom: 0;
   z-index: -1;
   opacity: 0.9;
-  color: #cec5aa;
+  color: #79725f;
 }
 
 h2,
@@ -79,7 +78,7 @@ h2 strong {
   display: block;
   font-size: 4rem;
   font-family: 'Luckiest Guy', cursive;
-  text-shadow: 3px 2px 0px rgba(150, 150, 150, 1);
+  text-shadow: 4px 4px 0 #79725f;
 }
 
 .btn {
@@ -112,9 +111,8 @@ h2 strong {
   position: relative;
   width: 1100px;
   z-index: 1;
-  background-color: #999;
+  background-color: #b4ac9a;
   border-radius: 8px;
-  box-shadow: 8px 8px 0px 0px #cec5aa;
 }
 
 .game-container .monkey {
@@ -133,7 +131,6 @@ h2 strong {
   z-index: 900;
   background-color: #e9e1c9;
   border-radius: 8px;
-  box-shadow: 8px 8px 0px 0px #999;
   perspective: 500px;
   perspective-origin: 50% 50%;
 }
