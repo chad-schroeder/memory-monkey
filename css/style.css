@@ -110,7 +110,7 @@ h2 strong {
   z-index: 100;
   width: 400px;
   opacity: 1;
-  background: #fffaf6;
+  background: #e9e1c9;
   border: 4px solid white;
   border-radius: 8px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2), 0 1px 5px rgba(0, 0, 0, 0.2),
@@ -168,8 +168,8 @@ h2 strong {
 .card-container {
   margin: 4px;
   background-color: #cec5aa;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQklEQVQYV2P8//+/JCMj43MGPACsBiSPTzFMDqwQl2JkA+AK0RWj24KiEKYYRKO7mzyFyNbhtBqbzzE8Q1TwEBvgADC3RjcXfBsqAAAAAElFTkSuQmCC);
 }
+
 .card {
   cursor: pointer;
   background-color: transparent;
