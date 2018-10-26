@@ -14,6 +14,7 @@ const game = {
     if (localStorage.getItem('bestScore')) {
       this.data.bestScore = localStorage.getItem('bestScore');
     }
+
     bestScore.textContent = this.data.bestScore;
 
     // populate card stack
