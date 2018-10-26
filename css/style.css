@@ -131,7 +131,7 @@ h2 strong {
   width: 1100px;
   z-index: 1;
   background-color: #cac0a7;
-
+  background-image: url(../images/noisebg.png);
   border-radius: 8px;
 }
 
