@@ -186,7 +186,10 @@ const cardSelection = event => {
   const cardMatch = card.getAttribute('data-match');
 
   if (game.data.activeCards < 2 && game.data.storedCardId !== cardId) {
-    console.log(game.data.activeCards, game.data.storedCardId, cardId);
+    console.log(
+      `Active cards: ${game.data.activeCards}, Previous card: ${game.data
+        .storedCardId || null}, Current card: ${cardId}`
+    );
     card.classList.add('is-flipped');
     game.cardSelection(cardId, cardMatch);
   }
