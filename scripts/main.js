@@ -156,10 +156,13 @@ const game = {
 
   gameOver() {
     // check for new best score
+    console.log(this.data.bestScore);
+
     if (
       this.data.score < this.data.bestScore ||
       Number.isNaN(this.data.bestScore)
     ) {
+      console.log(this.data.bestScore);
       this.data.bestScore = this.data.score;
       bestScore.textContent = this.data.score;
       localStorage.setItem('bestScore', this.data.score);
