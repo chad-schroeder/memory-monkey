@@ -6,13 +6,13 @@ const game = {
     storedCardId: '',
     storedCardMatch: '',
     score: 0,
-    bestScore: localStorage.getItem('bestScore')
+    bestScore: '--'
   },
 
   init() {
     // set best score
-    if (this.data.bestScore === null) {
-      this.data.bestScore = '--';
+    if (localStorage.getItem('bestScore')) {
+      this.data.bestScore = localStorage.getItem('bestScore');
     }
     bestScore.textContent = this.data.bestScore;
 
