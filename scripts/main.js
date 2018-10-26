@@ -23,7 +23,7 @@ const game = {
       cardContainer.classList.add('card-container');
 
       const cardTemplate = `
-        <div id=${`card-${index + 1}`} class="card card-stacked">
+        <div id=${`card-${index + 1}`} class="card">
           <div class="card-body">
             <div class="card-face card-face-front"></div>
             <div class="card-face card-face-back"></div>
