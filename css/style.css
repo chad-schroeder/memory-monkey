@@ -158,7 +158,9 @@ h2 strong {
   z-index: 900;
   background-color: #e9e1c9;
   border-radius: 8px;
+  -webkit-perspective: 500px;
   perspective: 500px;
+  -webkit-perspective-origin: 50% 50%;
   perspective-origin: 50% 50%;
 }
 
