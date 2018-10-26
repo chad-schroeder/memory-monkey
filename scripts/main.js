@@ -46,6 +46,7 @@ const game = {
 
     // shuffle card data
     this.shuffle();
+    console.log(this.data.cards);
 
     // apply card matching and remove previous game classes, if any
     cards.forEach((card, index) => {
@@ -72,7 +73,7 @@ const game = {
       `;
       topCardContainer.innerHTML = cardTemplate;
       stack.append(topCardContainer);
-    }, 1200);
+    }, 1000);
 
     setTimeout(() => {
       stack.querySelector('.card-animated').remove();

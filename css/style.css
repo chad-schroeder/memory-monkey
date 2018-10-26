@@ -16,7 +16,7 @@ body::after {
   height: 0;
   overflow: hidden;
   z-index: -1;
-  content: url(../images/jungle-eyes.gif);
+  content: url(../images/jungle-animated.gif);
 }
 
 section {
@@ -264,7 +264,7 @@ h2 strong {
   border-radius: 8px;
 }
 .card-face-front::after {
-  background-image: url(../images/jungle-eyes-static.jpg);
+  background-image: url(../images/jungle-card-back.png);
 }
 .card[data-match='1'] .card-face-back::after {
   background-image: url(../images/monkey-1.jpg);
@@ -314,7 +314,7 @@ h2 strong {
   right: 0;
   bottom: 0;
   border-radius: 8px;
-  background: url(../images/jungle-eyes.gif);
+  background: url(../images/jungle-animated.gif);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
