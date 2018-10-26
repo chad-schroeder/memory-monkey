@@ -7,6 +7,7 @@ body {
   font-family: sans-serif;
   text-align: center;
   background-color: #f8f2e4;
+  background-image: url(../images/noisebg.png);
 }
 
 body::after {
@@ -111,7 +112,8 @@ h2 strong {
   position: relative;
   width: 1100px;
   z-index: 1;
-  background-color: #b4ac9a;
+  background-color: #cac0a7;
+  background-image: url(../images/noisebg.png);
   border-radius: 8px;
 }
 
@@ -130,6 +132,7 @@ h2 strong {
   width: 848px;
   z-index: 900;
   background-color: #e9e1c9;
+  background-image: url(../images/noisebg.png);
   border-radius: 8px;
   perspective: 500px;
   perspective-origin: 50% 50%;
@@ -149,6 +152,7 @@ h2 strong {
 .card-container {
   margin: 4px;
   background-color: #cec5aa;
+  background-image: url(../images/noisebg.png);
 }
 .card {
   cursor: pointer;
