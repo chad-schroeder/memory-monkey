@@ -1,12 +1,12 @@
 const game = {
   data: {
     cards: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8],
-    matched: 0,
-    storedId: '',
-    storedMatch: '',
+    matchedCards: 0,
+    activeCards: 0,
+    storedCardId: '',
+    storedCardMatch: '',
     score: 0,
-    bestScore: localStorage.getItem('bestScore'),
-    allowClick: false
+    bestScore: localStorage.getItem('bestScore')
   },
 
   init() {
@@ -37,7 +37,7 @@ const game = {
 
   play() {
     // reset game data
-    this.data.matched = 0;
+    this.data.matchedCards = 0;
     this.data.score = 0;
     score.textContent = 0;
 
@@ -46,7 +46,6 @@ const game = {
 
     // shuffle card data
     this.shuffle();
-    console.log(this.data.cards);
 
     // apply card matching and remove previous game classes, if any
     const cards = document.querySelectorAll('.card');
@@ -78,30 +77,26 @@ const game = {
 
     setTimeout(() => {
       stack.querySelector('.card-animated').remove();
-
       //  deal out cards
       cards.forEach(card => card.classList.remove('card-stacked'));
-
-      // allow card clicks
-      this.data.allowClick = true;
     }, 4500);
   },
 
   cardSelection(currentId, currentMatch) {
+    // update active cards
+    this.data.activeCards += 1;
+
     // update score
     this.data.score += 1;
     score.textContent = this.data.score;
 
     // if no previous stored card exists, set to this one
-    if (!this.data.storedId) {
-      this.data.storedId = currentId;
-      this.data.storedMatch = currentMatch;
+    if (this.data.activeCards === 1) {
+      this.data.storedCardId = currentId;
+      this.data.storedCardMatch = currentMatch;
     } else {
-      // prevent further clicks
-      this.data.allowClick = false;
-
       // check for a match
-      if (this.data.storedMatch === currentMatch) {
+      if (this.data.storedCardMatch === currentMatch) {
         this.match(currentId, currentMatch);
       } else {
         this.unmatch(currentId, currentMatch);
@@ -110,16 +105,14 @@ const game = {
   },
 
   match(currentId, currentMatch) {
-    // update matched count
-    this.data.matched += 1;
+    // update matched cards count
+    this.data.matchedCards += 1;
 
     // update classes on matched cards
-    [
-      stack.querySelector(`#${this.data.storedId}`),
-      stack.querySelector(`#${currentId}`)
-    ].forEach(card => card.classList.add('card-matched'));
+    const cards = stack.querySelectorAll('.is-flipped');
+    cards.forEach(card => card.classList.add('card-matched'));
 
-    if (this.data.matched === 8) {
+    if (this.data.matchedCards === 8) {
       this.gameOver();
     } else {
       this.resetCards();
@@ -129,12 +122,8 @@ const game = {
   unmatch(currentId, currentMatch) {
     // flip selected cards back over after 1 second
     setTimeout(() => {
-      [
-        stack.querySelector(`#${this.data.storedId}`),
-        stack.querySelector(`#${currentId}`)
-      ].forEach(card => {
-        card.classList.remove('is-flipped');
-      });
+      const cards = stack.querySelectorAll('.is-flipped');
+      cards.forEach(card => card.classList.remove('is-flipped'));
 
       // reset stored data
       this.resetCards();
@@ -142,9 +131,9 @@ const game = {
   },
 
   resetCards() {
-    this.data.storedId = '';
-    this.data.storedMatch = '';
-    this.data.allowClick = true;
+    this.data.activeCards = 0;
+    this.data.storedCardId = '';
+    this.data.storedCardMatch = '';
   },
 
   shuffle(cards) {
@@ -158,11 +147,7 @@ const game = {
   },
 
   gameOver() {
-    // check for new best score
-    console.log(this.data.bestScore);
-
     if (this.data.score < this.data.bestScore || this.data.bestScore === '--') {
-      console.log(this.data.bestScore);
       this.data.bestScore = this.data.score;
       bestScore.textContent = this.data.score;
       localStorage.setItem('bestScore', this.data.score);
@@ -197,12 +182,13 @@ const playButton = alert.querySelector('button');
 const cardSelection = event => {
   if (!event.target.closest('.card')) return;
 
-  const parent = event.target.parentNode.parentNode;
-  const cardId = parent.getAttribute('id');
-  const cardMatch = parent.getAttribute('data-match');
+  const card = event.target.closest('.card');
+  const cardId = card.getAttribute('id');
+  const cardMatch = card.getAttribute('data-match');
 
-  if (game.data.allowClick && game.data.storedId !== cardId) {
-    parent.classList.add('is-flipped');
+  if (game.data.activeCards < 2 && game.data.storedCardId !== cardId) {
+    console.log(game.data.activeCards, game.data.storedCardId, cardId);
+    card.classList.add('is-flipped');
     game.cardSelection(cardId, cardMatch);
   }
 };

@@ -127,8 +127,9 @@ h2 strong {
 }
 
 .alert-heading {
+  margin-bottom: 1.2rem;
   color: #79725f;
-  font-size: 1.6rem;
+  font-size: 1.75rem;
 }
 
 /* game container */
