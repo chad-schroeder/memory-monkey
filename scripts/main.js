@@ -5,12 +5,15 @@ const game = {
     storedId: '',
     storedMatch: '',
     score: 0,
-    bestScore: localStorage.getItem('bestScore') || '--',
+    bestScore: localStorage.getItem('bestScore'),
     allowClick: false
   },
 
   init() {
     // set best score
+    if (this.data.bestScore === null) {
+      this.data.bestScore = '--';
+    }
     bestScore.textContent = this.data.bestScore;
 
     // populate card stack
@@ -158,10 +161,7 @@ const game = {
     // check for new best score
     console.log(this.data.bestScore);
 
-    if (
-      this.data.score < this.data.bestScore ||
-      Number.isNaN(this.data.bestScore)
-    ) {
+    if (this.data.score < this.data.bestScore || this.data.bestScore === '--') {
       console.log(this.data.bestScore);
       this.data.bestScore = this.data.score;
       bestScore.textContent = this.data.score;
