@@ -6,7 +6,7 @@ body {
   height: 100vh;
   font-family: sans-serif;
   text-align: center;
-  background-color: #e9e1c9;
+  background-color: #f8f2e4;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -112,9 +112,9 @@ h2 strong {
   position: relative;
   width: 1100px;
   z-index: 1;
-  background-color: #c0c0c0;
+  background-color: #999;
   border-radius: 8px;
-  box-shadow: 8px 8px 0px 0px #999;
+  box-shadow: 8px 8px 0px 0px #cec5aa;
 }
 
 .game-container .monkey {
