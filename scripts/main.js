@@ -5,15 +5,13 @@ const game = {
     storedId: '',
     storedMatch: '',
     score: 0,
-    bestScore: '',
+    bestScore: localStorage.getItem('bestScore') || '--',
     allowClick: false
   },
 
   init() {
-    // retrieve local storage, if exists
-    if (localStorage.getItem('bestScore')) {
-      bestScore.textContent = localStorage.getItem('bestScore');
-    }
+    // set best score
+    bestScore.textContent = this.data.bestScore;
 
     // populate card stack
     this.data.cards.forEach((card, index) => {
@@ -35,11 +33,10 @@ const game = {
   },
 
   play() {
-    // reset game data, if replay
+    // reset game data
     this.data.matched = 0;
     this.data.score = 0;
-    score.textContent = this.data.score;
-    const cards = document.querySelectorAll('.card');
+    score.textContent = 0;
 
     // hide alert box
     alert.classList.add('alert-hide');
@@ -49,6 +46,7 @@ const game = {
     console.log(this.data.cards);
 
     // apply card matching and remove previous game classes, if any
+    const cards = document.querySelectorAll('.card');
     cards.forEach((card, index) => {
       // clear out previous game card classes, if exists
       card.classList.remove('card-matched', 'is-flipped');
@@ -158,7 +156,7 @@ const game = {
 
   gameOver() {
     // check for new best score
-    if (!this.data.bestScore || this.data.score < this.data.bestScore) {
+    if (this.data.score < this.data.bestScore) {
       this.data.bestScore = this.data.score;
       bestScore.textContent = this.data.score;
       localStorage.setItem('bestScore', this.data.score);
