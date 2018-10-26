@@ -261,7 +261,7 @@ h2 strong {
   border: 8px solid white;
   border-radius: 8px;
 }
-.card-face-front::after,
+
 .card-face-back::after {
   content: '';
   position: absolute;
@@ -274,7 +274,7 @@ h2 strong {
   background-size: cover;
   border-radius: 8px;
 }
-.card-face-front::after {
+.card-face-front {
   background-image: url(../images/jungle-card-back.png);
 }
 .card[data-match='1'] .card-face-back::after {
