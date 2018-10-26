@@ -108,6 +108,7 @@ h2 strong {
   top: 50%;
   left: 50%;
   z-index: 100;
+  padding: 1.25rem;
   width: 400px;
   opacity: 1;
   background: #e9e1c9;
