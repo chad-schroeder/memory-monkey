@@ -84,6 +84,7 @@ const game = {
     }, 4500);
   },
 
+  // card selected, update click count and check for match
   cardSelection(currentId, currentMatch) {
     // update active cards
     this.data.activeCards += 1;
@@ -106,6 +107,7 @@ const game = {
     }
   },
 
+  // if match
   match() {
     // update matched cards count
     this.data.matchedCards += 1;
@@ -121,6 +123,7 @@ const game = {
     }
   },
 
+  // if not a match
   unmatch() {
     // flip selected cards back over after 1 second
     setTimeout(() => {
@@ -130,14 +133,15 @@ const game = {
     }, 1000);
   },
 
+  // reset
   resetCards() {
     this.data.activeCards = 0;
     this.data.storedCardId = '';
     this.data.storedCardMatch = '';
   },
 
+  // Fisher-Yates shuffle
   shuffle() {
-    // Fisher-Yates shuffle algorithm
     for (let i = this.data.cards.length - 1; i > 0; i -= 1) {
       let randomIndex = Math.floor(Math.random() * i);
       let placeholder = this.data.cards[i];
@@ -146,6 +150,7 @@ const game = {
     }
   },
 
+  // on game end
   gameOver() {
     if (this.data.score < this.data.bestScore || this.data.bestScore === '--') {
       this.data.bestScore = this.data.score;
@@ -180,6 +185,7 @@ const alert = document.querySelector('.alert');
 const alertHeading = alert.querySelector('.alert-heading');
 const playButton = alert.querySelector('button');
 
+// card selected
 const cardSelection = event => {
   if (!event.target.closest('.card')) return;
 
@@ -193,11 +199,13 @@ const cardSelection = event => {
   }
 };
 
+// start game
 const playGame = event => {
   if (!event.target.closest('[data-game=play]')) return;
   game.play();
 };
 
+// listen for card selection and start game
 document.addEventListener(
   'click',
   function(event) {
