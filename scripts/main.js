@@ -10,11 +10,12 @@ const game = {
   },
 
   init() {
-    // set best score
+    // get best score from local storage, if exists
     if (localStorage.getItem('bestScore')) {
       this.data.bestScore = localStorage.getItem('bestScore');
     }
 
+    // display best score, or default 0
     bestScore.textContent = this.data.bestScore;
 
     // populate card stack
@@ -76,9 +77,9 @@ const game = {
       stack.append(topCardContainer);
     }, 1000);
 
+    // after 4.5 seconds, remove animated card and deal out cards
     setTimeout(() => {
       stack.querySelector('.card-animated').remove();
-      //  deal out cards
       cards.forEach(card => card.classList.remove('card-stacked'));
     }, 4500);
   },
@@ -98,14 +99,14 @@ const game = {
     } else {
       // check for a match
       if (this.data.storedCardMatch === currentMatch) {
-        this.match(currentId, currentMatch);
+        this.match();
       } else {
-        this.unmatch(currentId, currentMatch);
+        this.unmatch();
       }
     }
   },
 
-  match(currentId, currentMatch) {
+  match() {
     // update matched cards count
     this.data.matchedCards += 1;
 
@@ -120,11 +121,10 @@ const game = {
     }
   },
 
-  unmatch(currentId, currentMatch) {
+  unmatch() {
     // flip selected cards back over after 1 second
     setTimeout(() => {
       this.resetCards();
-
       const cards = stack.querySelectorAll('.is-flipped');
       cards.forEach(card => card.classList.remove('is-flipped'));
     }, 1000);
@@ -136,7 +136,7 @@ const game = {
     this.data.storedCardMatch = '';
   },
 
-  shuffle(cards) {
+  shuffle() {
     // Fisher-Yates shuffle algorithm
     for (let i = this.data.cards.length - 1; i > 0; i -= 1) {
       let randomIndex = Math.floor(Math.random() * i);
@@ -179,6 +179,7 @@ const bestScore = document.querySelector('.best-score');
 const alert = document.querySelector('.alert');
 const alertHeading = alert.querySelector('.alert-heading');
 const playButton = alert.querySelector('button');
+
 const cardSelection = event => {
   if (!event.target.closest('.card')) return;
 
@@ -187,14 +188,11 @@ const cardSelection = event => {
   const cardMatch = card.getAttribute('data-match');
 
   if (game.data.activeCards < 2 && game.data.storedCardId !== cardId) {
-    console.log(
-      `Active cards: ${game.data.activeCards}, Previous card: ${game.data
-        .storedCardId || null}, Current card: ${cardId}`
-    );
     card.classList.add('is-flipped');
     game.cardSelection(cardId, cardMatch);
   }
 };
+
 const playGame = event => {
   if (!event.target.closest('[data-game=play]')) return;
   game.play();
