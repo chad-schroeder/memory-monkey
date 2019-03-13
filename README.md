@@ -1,6 +1,6 @@
 # Memory Monkey
 
-Welcome to Memory Monkey, a pre-curriculum Rithm project to practice DOM manipulation.
+Welcome to Memory Monkey, a pre-curriculum Rithm project to practice DOM manipulation using vanilla javascript.
 
 View project: https://chad-schroeder.github.io/memory-monkey/
 
