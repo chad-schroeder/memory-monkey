@@ -142,11 +142,11 @@ const game = {
 
   // Fisher-Yates shuffle
   shuffle() {
-    for (let i = this.data.cards.length - 1; i > 0; i -= 1) {
-      let randomIndex = Math.floor(Math.random() * i);
-      let placeholder = this.data.cards[i];
-      this.data.cards[i] = this.data.cards[randomIndex];
-      this.data.cards[randomIndex] = placeholder;
+    const cards = this.data.cards;
+
+    for (let i = cards.length - 1; i > 0; i -= 1) {
+      let randomIndex = Math.floor(Math.random() * (i + 1));
+      [cards[i], cards[randomIndex]] = [cards[randomIndex], cards[i]];
     }
   },
 
